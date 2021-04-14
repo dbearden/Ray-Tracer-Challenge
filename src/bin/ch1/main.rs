@@ -1,4 +1,5 @@
-use ray_tracer::{Point, Vector};
+mod tuple;
+use tuple::{Point, Vector};
 struct Projectile {
     position: Point,
     velocity: Vector,
