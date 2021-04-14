@@ -1,12 +1,12 @@
 use float_cmp::{self, approx_eq};
 #[derive(Copy, Clone, Debug)]
-struct Point {
-    x: f64,
-    y: f64,
-    z: f64,
+pub struct Point {
+    pub x: f64,
+    pub y: f64,
+    pub z: f64,
 }
 impl Point {
-    fn new(x: f64, y: f64, z: f64) -> Point {
+    pub fn new(x: f64, y: f64, z: f64) -> Point {
         Self { x, y, z }
     }
 }
@@ -56,14 +56,14 @@ impl std::ops::Neg for Point {
 //}
 
 #[derive(Copy, Clone, Debug)]
-struct Vector {
-    x: f64,
-    y: f64,
-    z: f64,
+pub struct Vector {
+    pub x: f64,
+    pub y: f64,
+    pub z: f64,
 }
 
 impl Vector {
-    fn new(x: f64, y: f64, z: f64) -> Vector {
+    pub fn new(x: f64, y: f64, z: f64) -> Vector {
         Self { x, y, z }
     }
 
