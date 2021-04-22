@@ -9,7 +9,7 @@ use super::tuple::Color;
 pub struct Canvas {
     pub width: usize,
     pub height: usize,
-    pub pixels: Vec<Color>,
+    pub pixels: Vec<Vec<Color>>,
 }
 
 impl Canvas {
@@ -17,16 +17,16 @@ impl Canvas {
         Self {
             width,
             height,
-            pixels: vec![Color::default(); width * height],
+            pixels: vec![vec![Color::default(); width]; height],
         }
     }
 
     pub fn write(&mut self, x: usize, y: usize, color: Color) {
-        self.pixels[(self.width * y) + x] = color;
+        self.pixels[y][x] = color;
     }
 
     pub fn pixel_at(&self, x: usize, y: usize) -> Color {
-        self.pixels[(self.width * y) + x]
+        self.pixels[y][x]
     }
 
     pub fn to_ppm(&self, filename: &str) -> io::Result<()> {
@@ -34,7 +34,7 @@ impl Canvas {
         let mut w = BufWriter::new(f);
         let header = format!("P3\n{} {}\n255", self.width, self.height);
         w.write(header.as_bytes())?;
-        for (i, pixel) in self.pixels.iter().enumerate() {
+        for (i, pixel) in self.pixels.iter().flatten().enumerate() {
             if i % self.width == 0 {
                 w.write(b"\n")?;
             }
@@ -55,7 +55,7 @@ mod tests {
         let c = Canvas::new(10, 20);
         assert_eq!(c.width, 10);
         assert_eq!(c.height, 20);
-        assert!(c.pixels.iter().all(|&c| c == Color::default()));
+        assert!(c.pixels.iter().flatten().all(|&c| c == Color::default()));
     }
 
     #[test]
