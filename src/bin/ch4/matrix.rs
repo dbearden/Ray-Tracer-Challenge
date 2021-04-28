@@ -1,4 +1,4 @@
-use float_cmp::{approx_eq, ApproxEq};
+use float_cmp::{approx_eq};
 
 use crate::{transformations::Transformation, tuple::Vector};
 
@@ -11,7 +11,7 @@ pub struct Matrix<const N: usize> {
 
 impl<const N: usize> Matrix<N> {
     pub fn new(data: [[f64; N]; N]) -> Self {
-        assert!(2 <= N && N <= 4);
+        assert!((2..=4).contains(&N));
         Matrix { data }
     }
 
@@ -66,7 +66,7 @@ impl Matrix<4> {
     pub fn determinant(&self) -> f64 {
         let mut det = 0.0;
         for column in 0..4 {
-            det = det + self[0][column] * self.cofactor(0, column)
+            det += self[0][column] * self.cofactor(0, column)
         }
 
         det
@@ -123,7 +123,7 @@ impl Matrix<3> {
     pub fn determinant(&self) -> f64 {
         let mut det = 0.0;
         for column in 0..3 {
-            det = det + self[0][column] * self.cofactor(0, column)
+            det += self[0][column] * self.cofactor(0, column)
         }
 
         det

@@ -1,5 +1,5 @@
 mod tuple;
-use std::{fmt::Display, fs::File, io::Write};
+use std::{io::Write};
 
 use tuple::{Color, Point, Tuple, Vector};
 mod canvas;

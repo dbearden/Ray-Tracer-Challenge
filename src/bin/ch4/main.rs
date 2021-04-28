@@ -6,7 +6,7 @@ mod matrix;
 mod transformations;
 mod tuple;
 use canvas::Canvas;
-use matrix::Matrix;
+
 use transformations::Transformation;
 use tuple::{Color, Point, Tuple};
 
