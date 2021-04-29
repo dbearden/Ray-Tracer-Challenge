@@ -2,11 +2,11 @@ use std::{cell::RefCell, rc::Rc};
 
 use float_cmp::approx_eq;
 
+use crate::shapes::Shape;
 use crate::{
     matrix::Matrix,
     tuple::{Point, Tuple, Vector},
 };
-use crate::{shapes::Shape};
 
 pub(crate) struct Ray {
     origin: Point,
@@ -74,7 +74,7 @@ pub fn hit(xs: Vec<Intersection>) -> Option<Intersection> {
         .filter(|i| approx_eq!(f64, i.t, 0.0) || i.t > 0.0)
         .min_by(|i1, i2| i1.t.partial_cmp(&i2.t).unwrap_or(std::cmp::Ordering::Equal))
 }
-fn set_transform(s: Rc<RefCell<dyn Shape>>, t: Matrix<4>) {
+pub fn set_transform(s: Rc<RefCell<dyn Shape>>, t: Matrix<4>) {
     s.borrow_mut().set_transform(t);
 }
 #[cfg(test)]

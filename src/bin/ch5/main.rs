@@ -7,9 +7,11 @@ mod shapes;
 mod transformations;
 mod tuple;
 use canvas::Canvas;
-use ray::{hit, Ray};
+use matrix::Matrix;
+use ray::{hit, set_transform, Ray};
 use shapes::Sphere;
 
+use transformations::Transformation;
 use tuple::{Color, Point, Tuple};
 
 fn main() {
@@ -22,6 +24,12 @@ fn main() {
     let half = wall_size / 2.0;
     let mut c = Canvas::new(canvas_pixels, canvas_pixels);
     let color = Color::new(1.0, 0.0, 0.0);
+    set_transform(
+        s.clone(),
+        Matrix::<4>::IDENTITY
+            .scaling(0.5, 1.0, 1.0)
+            .translation(1.0, 0.0, 1.0),
+    );
     for y in 0..canvas_pixels - 1 {
         let world_y = half - pixel_size * y as f64;
         for x in 0..canvas_pixels - 1 {
