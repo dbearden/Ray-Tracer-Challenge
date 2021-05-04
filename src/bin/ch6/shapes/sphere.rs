@@ -1,5 +1,3 @@
-
-
 use crate::{
     materials::Material,
     matrix::Matrix,
@@ -53,7 +51,7 @@ pub fn reflect(i: Vector, normal: Vector) -> Vector {
 
 #[cfg(test)]
 mod tests {
-    use std::{f64::consts::FRAC_1_SQRT_2, f64::consts::PI};
+    use std::{cell::RefCell, f64::consts::FRAC_1_SQRT_2, f64::consts::PI, rc::Rc};
 
     use crate::{
         materials::Material,
