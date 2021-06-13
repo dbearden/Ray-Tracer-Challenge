@@ -675,7 +675,7 @@ mod tests {
         let xs = intersections(vec![Intersection::new(SQRT_2, floor)]);
         let comps = prepare_computations(&xs[0], &r, &xs);
         let color = w.shade_hit(&comps, 5);
-        assert_eq!(color, Color::new(0.93642, 0.68642, 0.68642));
+        assert_eq!(color, Color::new(1.31450, 0.68642, 0.68642));
     }
 
     #[test]
@@ -703,6 +703,6 @@ mod tests {
         let xs = intersections(vec![Intersection::new(SQRT_2, floor)]);
         let comps = prepare_computations(&xs[0], &r, &xs);
         let color = w.shade_hit(&comps, 5);
-        assert_eq!(color, Color::new(0.93391, 0.69643, 0.69243));
+        assert_eq!(color, Color::new(1.29609, 0.69643, 0.69243));
     }
 }
