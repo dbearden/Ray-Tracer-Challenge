@@ -129,7 +129,7 @@ fn main() {
     world.objects = objects;
     world.lights[0].position = Point::new(-4.0, 9.0, 3.0);
 
-    let mut camera = Camera::new(2000, 1500, FRAC_PI_2);
+    let mut camera = Camera::new(1000, 750, FRAC_PI_2);
     camera.transform = view_transform(
         Point::new(-6.0, 5.0, 3.0),
         Point::new(0.0, 1.0, 0.0),
