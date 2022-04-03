@@ -1,5 +1,4 @@
-#![feature(const_generics)]
-#![feature(const_evaluatable_checked)]
+#![feature(generic_const_exprs)]
 mod camera;
 mod canvas;
 mod lights;
@@ -12,8 +11,7 @@ mod tuple;
 mod world;
 use camera::{render, Camera};
 
-
-use materials::{Material};
+use materials::Material;
 use matrix::Matrix;
 
 use shapes::Sphere;

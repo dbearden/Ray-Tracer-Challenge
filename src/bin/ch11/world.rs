@@ -272,6 +272,7 @@ pub fn prepare_computations(hit: &Intersection, r: &Ray, xs: &Vec<Intersection>)
 #[cfg(test)]
 mod tests {
     use std::{
+        assert_matches::assert_matches,
         cell::RefMut,
         f64::consts::{FRAC_1_SQRT_2, SQRT_2},
     };

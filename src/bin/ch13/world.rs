@@ -9,6 +9,7 @@ use crate::{
     transformations::Transformation,
     tuple::{Color, Point, Tuple, Vector},
 };
+use std::assert_matches::assert_matches;
 
 const EPSILON: f64 = 0.00003;
 pub struct World {
